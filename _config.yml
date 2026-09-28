@@ -21,7 +21,7 @@ favicon: assets/images/MPS_Lab.ico
 main_media:
   source: assets/images/mpo_comm.png
   caption: |
-    **Gate commutativity and cancellation in the computation of Γ(a)**. The figure highlights three types of gates based on their interaction with the observable: (1) Gates with no generator interaction with the observable (e.g., g5) commute and cancel out with their adjoints. (2) Gates with an even number of generator interactions with the observable (e.g., g4) acquire no net phase, allowing them to commute and cancel. (3) Gates with an odd number of generator interactions with the observable (e.g., g2) acquire a negative phase and do not cancel out, forming the effective reverse light cone Γ(a).
+    <b>Gate commutativity and cancellation in the computation of Γ(a)</b>. The figure highlights three types of gates based on their interaction with the observable: (1) Gates with no generator interaction with the observable (e.g., g5) commute and cancel out with their adjoints. (2) Gates with an even number of generator interactions with the observable (e.g., g4) acquire no net phase, allowing them to commute and cancel. (3) Gates with an odd number of generator interactions with the observable (e.g., g2) acquire a negative phase and do not cancel out, forming the effective reverse light cone Γ(a).
 
 
 
