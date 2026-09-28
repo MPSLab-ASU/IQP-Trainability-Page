@@ -1,48 +1,17 @@
+Quantum Circuit Born Machines (QCBMs) offer a promising framework for generative quantum machine learning, leveraging the Born rule to define probability distributions through quantum state measurements (Liu and Wang 2018; Coyle et al. 2020; Gili et al. 2023). When instanti- ated with Instantaneous Quantum Polynomial (IQP) circuits (Bremner, Montanaro, and Shepherd 2016), QCBMs exhibit a powerful duality. Sampling from these circuits is prov- ably hard for classical computers under standard complexity assumptions (Bremner, Montanaro, and Shepherd 2016), yet their Pauli expectation values can be calculated classi- cally in polynomial time (Nest 2009). By reformulating the Maximum Mean Discrepancy (MMD) loss (Liu and Wang 2018) strictly in terms of these analytical expectation values, IQP-QCBMs can be optimized entirely classically (Recio- Armengol, Ahmed, and Bowles 2025). This "train classically, deploy quantumly" paradigm avoids shot noise from quantum measurement and physical device errors during optimization, allowing models to be trained classically prior to deploying quantum sampling at scale, making them exceptionally hardware-efficient and attractive for NISQ-era applications (Recio-Armengol, Ahmed, and Bowles 2025).
 
-## Math Demo
-$$ \alpha = \beta $$
+Despite these practical advantages, the optimization of quantum machine learning models remains severely constrained by trainability bottlenecks. Chief among these is the phenomenon of barren plateaus (McClean et al. 2018), where the variance of cost function gradients vanishes exponentially with the increase in the number of qubits, leaving optimization algorithms stranded on flat cost landscapes. In loss formulations such as the MMD, this issue is intimately linked to kernel concentration (Thanasilp et al. 2024), where parameter updates become exponentially concentrated around their mean value, rendering the loss landscape uninformative and data-independent. Critically, these issues are inherent to the quantum feature space and therefore also plague classically trained IQP-QCBMs even in the absence of noise.
 
-## Normal Code
-This is an academic paper project page template.
+To address the trainability challenges in the classically trained IQP-QCBMs, recent work (Lerch et al. 2026) explored mitigation strategies like warm starts and data-dependent initializations, but their framework remains tied to uniform hypercube sampling. Beyond that, (Shen et al. 2026) analyzed trainability under uniform initialization ($$\theta_j\sim U[0,2\pi]$$). However, uniform sampling of parameters across $$[0,2\pi]$$ forces quantum states to globally over-explore Hilbertspace, causing destructive phase interference that guarantees exponential gradient decay (barren plateaus) as system size grows. As such it is useful to expand this analysis to other parameter initialization schemes.
 
+As noted by (Shen et al. 2026) themselves, that small- variance Gaussian initialization ($$\theta_j\sim N(\mu_\theta,\sigma_\theta^2)$$ may hold significant promise in addressing the trainability of IQP-QCBMs. Analogous to variance-scaled initializations like Xavier (Glorot and Bengio 2010) or He (He et al. 2015) in classical deep learning, tuning $$\sigma_\theta^2$$ controls how quantum states explore Hilbert space—restricting trajectories to informative local sub-regions to prevent exponential concentration (Zhang et al. 2022). However, their Gaussian analysis relies on global worst-case assumptions, yielding loose bounds that miss how initialization variance $$\sigma_\theta^2$$ interacts with local gate coupling and phase cancellations.
 
-Example project pages built using this template are:
-- https://www.vision.huji.ac.il/deepsim/
-- https://www.vision.huji.ac.il/3d_ads/
-- https://www.vision.huji.ac.il/ssrl_ad/
-- https://www.vision.huji.ac.il/conffusion/
+This work extends the analysis of trainability of IQP-QCBMs under Gaussian parameter initialization and establishes a rigorous theoretical framework for IQP-QCBM trainability under Gaussian initializations. By leveraging Stein's lemma and Lipschitz concentration inequalities, our theoretical analysis establishes analytical lower bounds on MMD gradient variance and probabilistic concentration for IQP-QCBMs under Gaussian initializations. The main results of this paper are:
 
+- We derive an analytical closed-form expression for the MMD cost gradient, demonstrating that non-zero updates occur strictly for observables $$Z_a$$ that overlap with a parameter's generator mask ($$\mathbf{g}_k \cdot \mathbf{a} = 1$$). Consequently, sparse IQP generators inherently induce a sparse gradient structure.
 
-## Start using the template
-To start using the template click on `Use this Template`.
+- We establish an analytical lower bound on loss gradient variance showing gate cancellations restrict observable dependencies to a local reverse light cone, $$\Gamma(a) := \{j : \mathbf{g}_j \cdot \mathbf{a} = 1\}$$. Thus, gradient variance decays as $$\exp(-2\sigma_\theta^2 \lvert\Gamma(a)\rvert)$$, showing that local gate connectivity – rather than total circuit depth – determines whether an IQP circuit concentrates.
 
-The template uses html for controlling the content and css for controlling the style. 
-To edit the websites contents edit the `index.html` file. It contains different HTML "building blocks", use whichever ones you need and comment out the rest.  
+- We prove that exponential gradient concentration is strictly mitigated when the parameter initialization variance scales as $$\sigma_\theta^2 = O(1/ \max_a \lvert\Gamma(a)\rvert)$$, the parameter mean scales as $$\mu_\theta = O(1/ \sqrt{\max_a \lvert\Gamma(a)\rvert})$$, and the MMD kernel bandwidth scales as $$\sigma = \Omega(n)$$. Consequently, tuning initialization variance to the local reverse light cone size preserves trainability across arbitrary IQP circuit structures.
 
-**IMPORTANT!** Make sure to replace the `favicon.ico` under `static/images/` with one of your own, otherwise your favicon is going to be a dreambooth image of me.
-
-## Components
-- Teaser video
-- Images Carousel
-- Youtube embedding
-- Video Carousel
-- PDF Poster
-- Bibtex citation
-
-## Tips:
-- The `index.html` file contains comments instructing you what to replace, you should follow these comments.
-- The `meta` tags in the `index.html` file are used to provide metadata about your paper 
-(e.g. helping search engine index the website, showing a preview image when sharing the website, etc.)
-- The resolution of images and videos can usually be around 1920-2048, there rarely a need for better resolution that take longer to load. 
-- All the images and videos you use should be compressed to allow for fast loading of the website (and thus better indexing by search engines). For images, you can use [TinyPNG](https://tinypng.com), for videos you can need to find the tradeoff between size and quality.
-- When using large video files (larger than 10MB), it's better to use youtube for hosting the video as serving the video from the website can take time.
-- Using a tracker can help you analyze the traffic and see where users came from. [statcounter](https://statcounter.com) is a free, easy to use tracker that takes under 5 minutes to set up. 
-- This project page can also be made into a github pages website.
-- Replace the favicon to one of your choosing (the default one is of the Hebrew University). 
-- Suggestions, improvements and comments are welcome, simply open an issue or contact me. You can find my contact information at [https://pages.cs.huji.ac.il/eliahu-horwitz/](https://pages.cs.huji.ac.il/eliahu-horwitz/)
-
-## Acknowledgments
-Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.
-
-## Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+- We establish a Gaussian concentration bound for MMD cost gradients, showing that deviation probabilities are controlled by the product of the parameter variance and the Lipschitz constant of the gradient of the loss. This bound shows that a small variance and dense circuit can both diagnose the occurrence of a barren plateau.

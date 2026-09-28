@@ -1,8 +1,11 @@
 ```bib
-@book{ruby,
-  title     = {The Ruby Programming Language},
-  author    = {Flanagan, David and Matsumoto, Yukihiro},
-  year      = {2008},
-  publisher = {O'Reilly Media}
+@misc{deluca2026trainabilityiqpquantumcircuit,
+      title={Trainability of IQP Quantum Circuit Born Machines Under Gaussian Initialization}, 
+      author={Gennaro De Luca, Vinayak Sharma, Aviral Shrivastava},
+      year={2026},
+      eprint={2606.10179},
+      archivePrefix={arXiv},
+      primaryClass={quant-ph},
+      url={https://arxiv.org/abs/2606.10179}, 
 }
 ```
