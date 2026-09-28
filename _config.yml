@@ -1,6 +1,6 @@
 ######################## Paper Information ########################################
 # Personal info
-paper_name: "MPS-LAB Paper Page Template"
+paper_name: "Trainability of IQP Quantum Circuit Born Machines Under Gaussian Initialization"
 
 organization: Arizona State University 
 sub_organization: School of Computing and Augmented Intelligence 
@@ -8,11 +8,11 @@ preprint : True # Set true if pre-print. False otherwise
 
 ######################## Paper Resources ########################################
 
-paper_pdf: https://dl.acm.org/doi/pdf/10.1145/3358198 # Main PDF Link here
+paper_pdf: https://arxiv.org/pdf/2606.10179 # Main PDF Link here
 # supplementary_pdf: Supplementary PDF here
-code: https://github.com/MPSLab-ASU/Project_Page_Template # GitHub link here
-arXiv : https://arxiv.org/abs/1512.01274 # ArXiV Publication Link Here
-IEEE: https://ieeexplore.ieee.org/document/9187262 # IEEE Publication Link Here
+# code: https://github.com/MPSLab-ASU/Project_Page_Template # GitHub link here
+arXiv : https://arxiv.org/abs/2606.10179 # ArXiV Publication Link Here
+# IEEE: https://ieeexplore.ieee.org/document/9187262 # IEEE Publication Link Here
 #ACM: ACM Publication Link Here
 # Additional icon links
 
