@@ -1,20 +1,31 @@
+- name: Gennaro De Luca
+  github: gdeluca1
+  linkedin: gennaro-de-luca
+  email: Gennaro.Deluca@asu.edu
+  position: Instructor
+  organization: Arizona State University
+  sub_organization: School of Computing and Augmented Intelligence
+  google_scholar: https://scholar.google.com/citations?user=DLnXUTUAAAAJ&hl=en
+  primary: true
+
 - name: Vinayak Sharma
   github: vinayak19th
   linkedin: vinayak19th
   email: vsharm87@asu.edu
-  position: MS in CS
+  position: PhD, Computer Science
   organization: Arizona State University
   sub_organization: School of Computing and Augmented Intelligence
-  website: vinayak19th.github.io
+  website: https://www.vinayak19th.me/
   orcid: https://orcid.org/0009-0009-5633-4003
-  primary: true
+  google_scholar: https://scholar.google.com/citations?user=r763skMAAAAJ&hl=en
 
-- name: Shail Dave
-  position: PhD 
-  github: shail-dave
-  email: Shail.Dave@asu.edu 
-  linkedin: daveshail
+- name: Dr. Aviral Shrivastava
+  linkedin: aviral
+  email: Aviral.Shrivastava@asu.edu
+  position: Professor
   organization: Arizona State University
   sub_organization: School of Computing and Augmented Intelligence
-  google_scholar: https://scholar.google.com/citations?hl=en&user=SVft2R0AAAAJ&view_op=list_works
-  website: https://sites.google.com/view/shail/
+  github: aviralshri
+  orcid: https://orcid.org/0000-0002-1075-897X
+  website: https://labs.engineering.asu.edu/mps-lab/person/aviral-shrivastava/
+  google_scholar: https://scholar.google.com/citations?user=zlzK-v0AAAAJ&hl=en
