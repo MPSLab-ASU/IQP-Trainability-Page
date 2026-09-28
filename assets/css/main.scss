@@ -92,6 +92,11 @@ hr.dotted {
     }
 }
 
+.description{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .authors{
     display: flex;
     justify-content: center;
